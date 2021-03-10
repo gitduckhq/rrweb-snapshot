@@ -310,16 +310,7 @@ function serializeNode(
         }
       }
       // dynamic stylesheet
-      if (
-        tagName === 'style' &&
-        (n as HTMLStyleElement).sheet &&
-        // TODO: Currently we only try to get dynamic stylesheet when it is an empty style element
-        !(
-          (n as HTMLElement).innerText ||
-          (n as HTMLElement).textContent ||
-          ''
-        ).trim().length
-      ) {
+      if (tagName === 'style' && (n as HTMLStyleElement).sheet) {
         const cssText = getCssRulesString(
           (n as HTMLStyleElement).sheet as CSSStyleSheet,
         );
